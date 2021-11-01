@@ -1,0 +1,5 @@
+Image album, stop at end and start
+https://jsbin.com/josazureno/edit?html,output
+
+Image album, cicles at end and start
+https://jsbin.com/vubugovefe/edit?html,output

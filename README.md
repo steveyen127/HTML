@@ -7,8 +7,7 @@
 <h3 align="center">MaterializeCSS</h3>
 
 ## To preview html on browser click the link below
-- <a href="https://html5marvel.netlify.app/" target="_blank"> Preview </a>
-- [Preview](https://html5marvel.netlify.app/){:target="_blank" rel="noopener"}
+- [Preview](https://html5marvel.netlify.app/)
 
 
 ## Copyright and license

@@ -40,10 +40,7 @@
 		.divider{
 			border-top: 8px solid #F0131E;
 		}
-		.card-image{
-			height: 400px;
-			overflow: hidden;
-		}
+		
 		.card-content{
 			height: 80px;
 			overflow:hidden;
@@ -53,14 +50,18 @@
     <header>
     	<nav class="nav-extended grey darken-4">
 		    <div class="nav-wrapper">
-		      <a href="#" class="brand-logo">Marvel's Universe Films</a>
-		      <a class="brand-logo center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" height="70px" width="200px"></a>
-		      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <li><a href="sass.html">Sass</a></li>
-		        <li><a href="badges.html">Components</a></li>
-		        <li><a href="collapsible.html">JavaScript</a></li>
-		      </ul>
+		      	<a href="index.html" class="brand-logo">Marvel's Universe Films</a>
+		      	<a class="brand-logo center">
+		      		<div class="card-image center">
+		      			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" height="70px" width="200px">
+		      		</div>
+		      	</a>
+		      	<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		      	<ul id="nav-mobile" class="right hide-on-med-and-down">
+		        	<li><a href="sass.html">Sass</a></li>
+		        	<li><a href="badges.html">Components</a></li>
+		        	<li><a href="collapsible.html">JavaScript</a></li>
+		      	</ul>
 		    </div>
 		    <div class="nav-content">
 		      <ul class="tabs tabs-transparent">
@@ -72,7 +73,12 @@
 		    </div>
 		</nav>
     </header>
-    
+    <style type="text/css">
+    	.card-image{
+    		height: 400px;
+    		overflow: hidden;
+    	}
+    </style>
     <body style="background-color:white;">
 
 		  <ul class="sidenav" id="mobile-demo">

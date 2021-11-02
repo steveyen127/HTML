@@ -8,6 +8,7 @@
 
 ## To preview html on browser click the link below
 - <a href="https://html5marvel.netlify.app/" target="_blank"> Preview </a>
+- [Preview](https://html5marvel.netlify.app/){:target="_blank" rel="noopener"}
 
 
 ## Copyright and license

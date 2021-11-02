@@ -14,10 +14,6 @@
       <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
     </head>
     <style type="text/css">
-    	.card-content{
-    		height: 100px;
-    	}
-
     	#myBtn {
 		  display: none; /* Hidden by default */
 		  position: fixed; /* Fixed/sticky position */
@@ -37,19 +33,25 @@
 		#myBtn:hover {
 		  background-color: #555; /* Add a dark-grey background on hover */
 		}
-		.card-image{
-			height: 350px;
-			width: auto;
-		}
+
 		.background{
 			color: black;
 		}
+		.divider{
+			border-top: 8px solid #F0131E;
+		}
+		.card-image{
+			height: 400px;
+			overflow: hidden;
+		}
+		.card-content{
+			height: 80px;
+			overflow:hidden;
+		}
+		
     </style>
-    
-    <body style="background-color:black">
-    
-      `
-	    <nav class="nav-extended red darken-1">
+    <header>
+    	<nav class="nav-extended grey darken-4">
 		    <div class="nav-wrapper">
 		      <a href="#" class="brand-logo">Marvel's Universe Films</a>
 		      <a class="brand-logo center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" height="70px" width="200px"></a>
@@ -62,48 +64,54 @@
 		    </div>
 		    <div class="nav-content">
 		      <ul class="tabs tabs-transparent">
-		        <li class="tab"><a href="#test1">Phase 1</a></li>
-		        <li class="tab"><a href="#test2">Phase 2</a></li>
-		        <li class="tab"><a href="#test3">Phase 3</a></li>
-		        <li class="tab"><a href="#test4">Phase 4</a></li>
+		        <li class="tab"><a href="#phase1">Phase 1</a></li>
+		        <li class="tab"><a href="#phase2">Phase 2</a></li>
+		        <li class="tab"><a href="#phase3">Phase 3</a></li>
+		        <li class="tab"><a href="#phase4">Phase 4</a></li>
 		      </ul>
 		    </div>
 		</nav>
-	
+    </header>
+    
+    <body style="background-color:white;">
 
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">JavaScript</a></li>
-  </ul>
+		  <ul class="sidenav" id="mobile-demo">
+		    <li><a href="sass.html">Sass</a></li>
+		    <li><a href="badges.html">Components</a></li>
+		    <li><a href="collapsible.html">JavaScript</a></li>
+		  </ul>
 
+	    <div id="phase1" class="col s12 section">
+	    	
+	    	<h5 style="color:#F0131E"> Phase 1 </h5>
+	    	<div class="row" id="demo">
+	        	<!--下面迴圈的output會寫到這-->
+	      </div>
+	    </div>
 
-        
-      
-    <div id="test1" class="col s12">	//Phase1
-    	<div class="row">
-      		<div class="col s12">This div is 12-columns wide on all screen sizes</div>
-      	</div>
-    	<div class="row" id="demo">
-        	<!--下面迴圈的output會寫到這-->
-      	</div>
-    </div>
-
-    <div id="test2" class="col s12">	//Phase2
-    <div class="row" id="demo2">
-        	<!--下面迴圈的output會寫到這-->
-      	</div>
-    </div>
-  	<div id="test3" class="col s12">	//Phase3
-  		<div class="row" id="demo3">
-        	<!--下面迴圈的output會寫到這-->
-      	</div>
-    </div>
-  	<div id="test4" class="col s12">	//Phase4
-  		<div class="row" id="demo4">
-        	<!--下面迴圈的output會寫到這-->
-      	</div>
-    </div>
+	    <div id="phase2" class="col s12 section">
+	    	<div class="divider"></div>
+	    	<h5 style="color:#F0131E"> Phase 2 </h5>
+	    	<div class="row" id="demo2">
+	        	<!--下面迴圈的output會寫到這-->
+	      </div>
+	    </div>
+	    
+	  	<div id="phase3" class="col s12 section">
+	  		<div class="divider"></div>
+	  		<h5 style="color:#F0131E"> Phase 3 </h5>	
+	  		<div class="row" id="demo3">
+	        	<!--下面迴圈的output會寫到這-->
+	      </div>
+	    </div>
+	    
+	  	<div id="phase4" class="col s12 section">
+	  		<div class="divider"></div>
+	  		<h5 style="color:#F0131E"> Phase 4 </h5>	
+	  		<div class="row" id="demo4">
+	        	<!--下面迴圈的output會寫到這-->
+	      </div>
+	    </div>
       <script>
  
         function writeText(index){
@@ -161,25 +169,44 @@
 	                   	 ["Black Widow (2021)",
 	                   	  "Shang-Chi and the Legend of the Ten Rings (2021)",
 	                   	  "Eternals (2021)"]];
-	        links = ["link1",
-	        		"link2",
-	        		"link3",
-	        		"link4",
-	        		"link5",
-	        		"link6"];
+	        links = [["items.html?filmid=0",
+	        				 "items.html?filmid=1",
+	        				 "items.html?filmid=2",
+	        				 "items.html?filmid=3",
+	        				 "items.html?filmid=4",
+	        				 "items.html?filmid=5"],
+	        				 ["items.html?filmid=6",
+	        				 "items.html?filmid=7",
+	        				 "items.html?filmid=8",
+	        				 "items.html?filmid=9",
+	        				 "items.html?filmid=10",
+	        				 "items.html?filmid=11"],
+	        				 ["items.html?filmid=12",
+	        				 "items.html?filmid=13",
+	        				 "items.html?filmid=14",
+	        				 "items.html?filmid=15",
+	        				 "items.html?filmid=16",
+	        				 "items.html?filmid=17",
+	        				 "items.html?filmid=18",
+	        				 "items.html?filmid=19",
+	        				 "items.html?filmid=20",
+	        				 "items.html?filmid=21",
+	        				 "items.html?filmid=22"],
+	        				 ["items.html?filmid=23",
+	        				 "items.html?filmid=24",
+	        				 "items.html?filmid=25"]];
 
 	        for (i = 0; i < picture[index].length; i++) {
-
-	 			let T = '<div class="col s12 m4 l2">'+
-	 					'	<div class="card">'+
-	          			'		<div class="card-image grey lighten-1">'+
+	 			let T = '<div class="col s12 m6 l2">'+
+	 							  '	<div class="card hoverable  grey lighten-1">'+
+	          			'		<div class="card-image center grey lighten-1">'+
 	          			'			<img src="'+picture[index][i]+'">'+
 	          			'		</div>'+
 	          			'    	<div class="card-content grey lighten-1">'+
 	          			'      		<h6><b><a class="black-text">'+films[index][i]+'</b></a></h6>'+
 	          			'    	</div>'+
 	          			'    	<div class="card-action grey lighten-1">'+
-	          			'      		<a class="teal-text" href="+links[i]+">More-></a>'+
+	          			'      		<a class="teal-text" href="'+links[index][i]+'">More-></a>'+
 	          			'    	</div>'+
 	          			'  	</div>'+
 	          			'</div>';
@@ -217,11 +244,11 @@
      
       </script>
   
-      <footer class="page-footer red darken-1">
+      <footer class="page-footer grey darken-4">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-              	<a class="grey-text text-lighten-3" href="https://shopping.pchome.com.tw/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Marvel_Studios_2016_logo.svg/1280px-Marvel_Studios_2016_logo.svg.png" height="50%" width="50%"></a>
+              	<a class="grey-text text-lighten-3" href="https://www.marvel.com/movies" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Marvel_Studios_2016_logo.svg/1280px-Marvel_Studios_2016_logo.svg.png" height="50%" width="50%"></a>
               </div>
             </div>
           </div>       

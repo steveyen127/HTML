@@ -145,7 +145,7 @@
         	var text3="";
         	var text4="";
         	
-	        for (i = 1; i < row; i++) {
+	        for (i = 0; i < row; i++) {
 	        	
 			 				let T = '<div class="col s12 m6 l2">'+
 			 							  '	<div class="card hoverable  grey lighten-1">'+
@@ -169,7 +169,6 @@
 			          	}else if(i < 27){
 			          		text4 +=T;
 			          	}
-			          	//text += T;
 	          
 	        }
 	        document.getElementById("demo").innerHTML = text1;
@@ -178,11 +177,7 @@
 	        document.getElementById("demo4").innerHTML = text4;
         }
         
-        
-  		//document.getElementById("demo").innerHTML = processSheetsData(response,0);
-  		//document.getElementById("demo2").innerHTML = processSheetsData(response,1);
-  		//document.getElementById("demo3").innerHTML = processSheetsData(response,2);
-  		//document.getElementById("demo4").innerHTML = processSheetsData(response,3);
+
 
 		//Get the button:
 		mybutton = document.getElementById("myBtn");

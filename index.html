@@ -50,7 +50,7 @@
     <header>
     	<nav class="nav-extended grey darken-4">
 		    <div class="nav-wrapper">
-		      	<a href="index.html" class="brand-logo">Marvel Cinematic Universe films</a>
+		      	<a href="index.html" class="brand-logo">Marvel Cinematic Universe Films</a>
 		      	<a class="brand-logo center">
 		      		
 		      		<div class="card-image center">
@@ -114,115 +114,75 @@
 	        	<!--下面迴圈的output會寫到這-->
 	      	</div>
 	    </div>
+
+	    <!-- 表單的部分 ->
+      <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
+      <script src="https://www.gstatic.com/charts/loader.js"></script>
       <script>
- 
-        function writeText(index){
-        	var text="";
-        	picture = [["https://upload.wikimedia.org/wikipedia/en/0/02/Iron_Man_%282008_film%29_poster.jpg", 
-                   "https://upload.wikimedia.org/wikipedia/en/f/f0/The_Incredible_Hulk_%28film%29_poster.jpg", 
-                   "https://upload.wikimedia.org/wikipedia/en/e/ed/Iron_Man_2_poster.jpg", 
-                   "https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg",
-                   "https://upload.wikimedia.org/wikipedia/en/3/37/Captain_America_The_First_Avenger_poster.jpg",
-                   "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg"],
-                   	["https://upload.wikimedia.org/wikipedia/en/1/19/Iron_Man_3_poster.jpg",
-                   	"https://upload.wikimedia.org/wikipedia/en/7/7f/Thor_The_Dark_World_poster.jpg",
-                   	"https://upload.wikimedia.org/wikipedia/en/9/9e/Captain_America_The_Winter_Soldier_poster.jpg",
-                   	"https://upload.wikimedia.org/wikipedia/en/3/33/Guardians_of_the_Galaxy_%28film%29_poster.jpg",
-                   	"https://upload.wikimedia.org/wikipedia/en/f/ff/Avengers_Age_of_Ultron_poster.jpg",
-                   	"https://upload.wikimedia.org/wikipedia/en/1/12/Ant-Man_%28film%29_poster.jpg"],
-                   	["https://upload.wikimedia.org/wikipedia/en/5/53/Captain_America_Civil_War_poster.jpg",
-                   	 "https://upload.wikimedia.org/wikipedia/en/a/a1/Doctor_Strange_%282016_film%29_poster.jpg",
-                   	 "https://upload.wikimedia.org/wikipedia/en/a/ab/Guardians_of_the_Galaxy_Vol_2_poster.jpg",
-                   	 "https://upload.wikimedia.org/wikipedia/en/f/f9/Spider-Man_Homecoming_poster.jpg",
-                   	 "https://upload.wikimedia.org/wikipedia/en/7/7d/Thor_Ragnarok_poster.jpg",
-                   	 "https://upload.wikimedia.org/wikipedia/en/d/d6/Black_Panther_%28film%29_poster.jpg",
-                   	 "https://upload.wikimedia.org/wikipedia/en/4/4d/Avengers_Infinity_War_poster.jpg",
-                   	 "https://upload.wikimedia.org/wikipedia/en/2/2c/Ant-Man_and_the_Wasp_poster.jpg",
-                   	 "https://upload.wikimedia.org/wikipedia/en/4/4e/Captain_Marvel_%28film%29_poster.jpg",
-                   	 "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg",
-                   	 "https://upload.wikimedia.org/wikipedia/en/b/bd/Spider-Man_Far_From_Home_poster.jpg"],
-                   	 ["https://upload.wikimedia.org/wikipedia/en/e/e9/Black_Widow_%282021_film%29_poster.jpg",
-                   	  "https://upload.wikimedia.org/wikipedia/en/7/74/Shang-Chi_and_the_Legend_of_the_Ten_Rings_poster.jpeg",
-                   	  "https://upload.wikimedia.org/wikipedia/en/9/9b/Eternals_%28film%29_poster.jpeg"]];
-        
-	        films = [["Iron Man (2008)",
-	                   "The Increadible Hulk (2008)",
-	                   "Iron Man 2 (2010)",
-	                   "Thor (2011)",
-	                   "Captain America The First Avenger (2011)",
-	                   "Marvel's The Avengers (2012)"],
-	                   ["Iron Man 3 (2013)",
-	                   	"Thor: The Dark World (2013)",
-	                   	"Captain America: The Winter Soldier (2014)",
-	                   	"Guardians of the Galaxy (2014)",
-	                   	"Avengers: Age of Ultron (2015)",
-	                   	"Ant-Man (2015)"],
-	                   	["Captain America: Civil War (2016)",
-	                   	 "Doctor Strange (2016)",
-	                   	 "Guardians of the Galaxy Vol. 2 (2017)",
-	                   	 "Spider-Man: Homecoming (2017)",
-	                   	 "Thor: Ragnarok (2017)",
-	                   	 "Black Panther (2018)",
-	                   	 "Avengers: Infinity War (2018)",
-	                   	 "Ant-Man and the Wasp (2018)",
-	                   	 "Captain Marvel (2019)",
-	                   	 "Avengers: Endgame (2019)",
-	                   	 "Spider-Man: Far From Home (2019)"],
-	                   	 ["Black Widow (2021)",
-	                   	  "Shang-Chi and the Legend of the Ten Rings (2021)",
-	                   	  "Eternals (2021)"]];
-	        links = [["items.html?filmid=0",
-	        				 "items.html?filmid=1",
-	        				 "items.html?filmid=2",
-	        				 "items.html?filmid=3",
-	        				 "items.html?filmid=4",
-	        				 "items.html?filmid=5"],
-	        				 ["items.html?filmid=6",
-	        				 "items.html?filmid=7",
-	        				 "items.html?filmid=8",
-	        				 "items.html?filmid=9",
-	        				 "items.html?filmid=10",
-	        				 "items.html?filmid=11"],
-	        				 ["items.html?filmid=12",
-	        				 "items.html?filmid=13",
-	        				 "items.html?filmid=14",
-	        				 "items.html?filmid=15",
-	        				 "items.html?filmid=16",
-	        				 "items.html?filmid=17",
-	        				 "items.html?filmid=18",
-	        				 "items.html?filmid=19",
-	        				 "items.html?filmid=20",
-	        				 "items.html?filmid=21",
-	        				 "items.html?filmid=22"],
-	        				 ["items.html?filmid=23",
-	        				 "items.html?filmid=24",
-	        				 "items.html?filmid=25"]];
+ 				
+ 				// https://developers.google.com/chart/interactive/docs/quick_start
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', {'packages':['corechart']});
 
-	        for (i = 0; i < picture[index].length; i++) {
-	 			let T = '<div class="col s12 m6 l2">'+
-	 							  '	<div class="card hoverable  grey lighten-1">'+
-	          			'		<div class="card-image center grey lighten-1">'+
-	          			'			<img src="'+picture[index][i]+'">'+
-	          			'		</div>'+
-	          			'    	<div class="card-content grey lighten-1">'+
-	          			'      		<h6><b><a class="black-text">'+films[index][i]+'</b></a></h6>'+
-	          			'    	</div>'+
-	          			'    	<div class="card-action grey lighten-1">'+
-	          			'      		<a class="teal-text" href="'+links[index][i]+'">More-></a>'+
-	          			'    	</div>'+
-	          			'  	</div>'+
-	          			'</div>';
-	          	text += T;
+        // Set a callback to run when the Google Visualization API is loaded.	
+        google.charts.setOnLoadCallback(init);
+
+ 				function init(){
+ 					var url =
+            'https://docs.google.com/spreadsheets/d/1e9TeD5wSFUjVkAJ0L70okChWkf3vAP7tPug6pj3HSw0/gviz/tq?sheet=htmldata';
+          var query = new google.visualization.Query(url);
+          query.setQuery('select *');
+          query.send(processSheetsData);
+ 				}
+
+        function processSheetsData(response){
+        	var data = response.getDataTable();
+        	var col = data.getNumberOfColumns();
+        	var row = data.getNumberOfRows();
+
+        	var text1="";
+        	var text2="";
+        	var text3="";
+        	var text4="";
+        	
+	        for (i = 1; i < row; i++) {
+	        	
+			 				let T = '<div class="col s12 m6 l2">'+
+			 							  '	<div class="card hoverable  grey lighten-1">'+
+			          			'		<div class="card-image center grey lighten-1">'+
+			          			'			<img src="'+data.getFormattedValue(i,2)+'">'+
+			          			'		</div>'+
+			          			'    	<div class="card-content grey lighten-1">'+
+			          			'      		<h6><b><a class="black-text">'+data.getFormattedValue(i,1)+'</b></a></h6>'+
+			          			'    	</div>'+
+			          			'    	<div class="card-action grey lighten-1">'+
+			          			'      		<a class="teal-text" href="'+data.getFormattedValue(i,3)+'">More-></a>'+
+			          			'    	</div>'+
+			          			'  	</div>'+
+			          			'</div>';
+			          	if(i <= 6){
+			          		text1 += T;
+			          	}else if(i <= 12){
+			          		text2 += T;
+			          	}else if(i <= 23){
+			          		text3 +=T;
+			          	}else if(i <= 27){
+			          		text4 +=T;
+			          	}
+			          	//text += T;
+	          
 	        }
-	        return text;
-
+	        document.getElementById("demo").innerHTML = text1;
+	        document.getElementById("demo2").innerHTML = text2;
+	        document.getElementById("demo3").innerHTML = text3;
+	        document.getElementById("demo4").innerHTML = text4;
         }
         
         
-  		document.getElementById("demo").innerHTML = writeText(0);
-  		document.getElementById("demo2").innerHTML = writeText(1);
-  		document.getElementById("demo3").innerHTML = writeText(2);
-  		document.getElementById("demo4").innerHTML = writeText(3);
+  		//document.getElementById("demo").innerHTML = processSheetsData(response,0);
+  		//document.getElementById("demo2").innerHTML = processSheetsData(response,1);
+  		//document.getElementById("demo3").innerHTML = processSheetsData(response,2);
+  		//document.getElementById("demo4").innerHTML = processSheetsData(response,3);
 
 		//Get the button:
 		mybutton = document.getElementById("myBtn");

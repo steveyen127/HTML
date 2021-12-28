@@ -61,119 +61,115 @@
 		}
 		
     </style>
-    <header>
+    <!----------------------------------NAV BAR----------------------------------->
     	<nav class="nav-extended grey darken-4">
 		    <div class="nav-wrapper">
-		      	<a href="index.html" class="brand-logo">Marvel Cinematic Universe films</a>
-		      	<a class="brand-logo center">
-		      		<div class="card-image center">
-		      			<a href="index.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" height="70px" width="200px"></a>
-		      		</div>
-		      	</a>
-		      	<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		      <a href="index.html" class="brand-logo">	Marvel Cinematic Universe Films</a>
+		      <a class="brand-logo center">
+		      	<div class="card-image center">
+		      		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" height="70px" width="200px">
+		      	</div>
+		      </a>
+		      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a href="index.html">Home</a></li>
+		        <li><a href="about.html">About</a></li>
+		        <li><a href="news.html">Lastest News</a></li>
+      		</ul>	
 		    </div>
-		    <div class="nav-content">
-		      <ul class="tabs tabs-transparent">
-		        <li class="tab"><a href="index.html#phase1">Phase 1</a></li>
-		        <li class="tab"><a href="index.html#phase2">Phase 2</a></li>
-		        <li class="tab"><a href="index.html#phase3">Phase 3</a></li>
-		        <li class="tab"><a href="index.html#phase4">Phase 4</a></li>
-		      </ul>
-		    </div>
-		</nav>
-    </header>
+			</nav>
+
+    <ul class="sidenav" id="mobile-demo">
+		  <li><a href="index.html">Home</a></li>
+		  <li><a href="about.html">About</a></li>
+		  <li><a href="news.html">Lastest News</a></li>
+  	</ul>
+<!----------------------------------NAV BAR----------------------------------->
     
     <body style="background-color:white;">
-
-		  <ul class="sidenav" id="mobile-demo">
-		    <li><a href="sass.html">Sass</a></li>
-		    <li><a href="badges.html">Components</a></li>
-		    <li><a href="collapsible.html">JavaScript</a></li>
-		  </ul>
-
 	    <div class="col s12">
 	    	<div class="row" id="demo">
 	        	<!--下面迴圈的output會寫到這-->
-	      	</div>
+	      </div>
 	    </div>
-
- <!-- 表單的部分 ->
+ 			<!-- 表單的部分 -->
       <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
       <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
-    	//Get film id number from url
-    	var filmid = decodeURIComponent(GetUrlVar('filmid'));
-    	var  idNum = Number(filmid);
 
-   	// https://developers.google.com/chart/interactive/docs/quick_start
-    // Load the Visualization API and the corechart package.
-    google.charts.load('current', {'packages':['corechart']});
+    	<script>
+    		//Get film id number from url
+    		var filmid = decodeURIComponent(GetUrlVar('filmid'));
+    		var  idNum = Number(filmid);
 
-    // Set a callback to run when the Google Visualization API is loaded.	
-    google.charts.setOnLoadCallback(init);
+   			// https://developers.google.com/chart/interactive/docs/quick_start
+    		// Load the Visualization API and the corechart package.
+    		google.charts.load('current', {'packages':['corechart']});
 
-		function init(){
- 			var url =
-            'https://docs.google.com/spreadsheets/d/1e9TeD5wSFUjVkAJ0L70okChWkf3vAP7tPug6pj3HSw0/gviz/tq?sheet=htmldata';
-      var query = new google.visualization.Query(url);
-      query.setQuery('select *');
-      query.send(processSheetsData);
- 		}
+    		// Set a callback to run when the Google Visualization API is loaded.	
+    		google.charts.setOnLoadCallback(init);
 
- 		function processSheetsData(response){
- 			var data = response.getDataTable();
-      var col = data.getNumberOfColumns();
-      var row = data.getNumberOfRows();
+				function init(){
+		 			var url =
+		            'https://docs.google.com/spreadsheets/d/1e9TeD5wSFUjVkAJ0L70okChWkf3vAP7tPug6pj3HSw0/gviz/tq?sheet=htmldata';
+		      var query = new google.visualization.Query(url);
+		      query.setQuery('select *');
+		      query.send(processSheetsData);
+		 		}
+
+		 		function processSheetsData(response){
+		 			var data = response.getDataTable();
+		      var col = data.getNumberOfColumns();
+		      var row = data.getNumberOfRows();
 
 
- 			var text="";
- 			let T = '<div class="col s4 m1 l2">'+
- 					'	<div class="card">'+
- 					'		<div class="card-image">'+
- 					'			<img src="' + data.getFormattedValue(idNum, 2) +'">'+
- 					'		</div>'+
- 					'	</div>'+
- 					'</div>'+
- 					'<div class="col s8 l8>'+
- 					'	<div class="card">'+
- 					'		<h4> ' + data.getFormattedValue(idNum, 1) + '</h4>'+
- 					'		<div class="divider"></div>'+
- 					'       <p><b> Directed by:</b> '+ data.getFormattedValue(idNum, 4) + '</p>'+
- 					'		<p><b> Starring:</b> '+ data.getFormattedValue(idNum, 5) + '</p>' +
- 					'		<p></p>'+
- 					'		<div class="divider"></div>'+
- 					'		<div class="card-content">'+
- 					'			<p>' + data.getFormattedValue(idNum, 6) +'</p>'+
- 					'		</div>'+
- 					'		<div class="video-container">'+
-        			'			<iframe width="900" height="506" src="'+data.getFormattedValue(idNum, 7)+'" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'+
-      				'		</div>'+
- 					'	</div>'+
- 					'</div>';
+		 			var text="";
+		 			let T = '<div class="col s4 m1 l2">'+
+		 					'	<div class="card">'+
+		 					'		<div class="card-image">'+
+		 					'			<img src="' + data.getFormattedValue(idNum, 2) +'">'+
+		 					'		</div>'+
+		 					'	</div>'+
+		 					'</div>'+
+		 					'<div class="col s8 l8>'+
+		 					'	<div class="card">'+
+		 					'		<h4> ' + data.getFormattedValue(idNum, 1) + '</h4>'+
+		 					'		<div class="divider"></div>'+
+		 					'       <p><b> Directed by:</b> '+ data.getFormattedValue(idNum, 4) + '</p>'+
+		 					'		<p><b> Starring:</b> '+ data.getFormattedValue(idNum, 5) + '</p>' +
+		 					'		<p></p>'+
+		 					'		<div class="divider"></div>'+
+		 					'		<div class="card-content">'+
+		 					'			<p>' + data.getFormattedValue(idNum, 6) +'</p>'+
+		 					'		</div>'+
+		 					'		<div class="video-container">'+
+		        			'			<iframe width="900" height="506" src="'+data.getFormattedValue(idNum, 7)+'" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'+
+		      				'		</div>'+
+		 					'	</div>'+
+		 					'</div>';
 
- 			text += T;
-			document.getElementById("demo").innerHTML = text;
- 		}
+		 			text += T;
+					document.getElementById("demo").innerHTML = text;
+		 		}
 
-  		//Get the button:
-		mybutton = document.getElementById("myBtn");
+		  		//Get the button:
+				mybutton = document.getElementById("myBtn");
 
-		// When the user scrolls down 20px from the top of the document, show the button
-		window.onscroll = function() {scrollFunction()};
+				// When the user scrolls down 20px from the top of the document, show the button
+				window.onscroll = function() {scrollFunction()};
 
-		function scrollFunction() {
-		  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-		    mybutton.style.display = "block";
-		  } else {
-		    mybutton.style.display = "none";
-		  }
-		}
+				function scrollFunction() {
+				  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				    mybutton.style.display = "block";
+				  } else {
+				    mybutton.style.display = "none";
+				  }
+				}
 
-		// When the user clicks on the button, scroll to the top of the document
-		function topFunction() {
-		  document.body.scrollTop = 0; // For Safari
-		  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-		}
+				// When the user clicks on the button, scroll to the top of the document
+				function topFunction() {
+				  document.body.scrollTop = 0; // For Safari
+				  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+				}
      
       </script>
       

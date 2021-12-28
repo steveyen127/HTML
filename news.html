@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+       <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+      <script type="text/javascript">
+      	function GetUrlVar(VarName) 
+		{
+		  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+		  var regexS = "[\\?&]" + VarName + "=([^&#]*)";
+		  var regex = new RegExp(regexS);
+		  var results = regex.exec(window.location.href);
+		  if (results == null)
+		   	 return "";
+		  else
+			 return results[1];
+		}
+
+		
+      </script>
+
+    </head>
+    <style type="text/css">
+    	#myBtn {
+		  display: none; /* Hidden by default */
+		  position: fixed; /* Fixed/sticky position */
+		  bottom: 20px; /* Place the button at the bottom of the page */
+		  right: 30px; /* Place the button 30px from the right */
+		  z-index: 99; /* Make sure it does not overlap */
+		  border: none; /* Remove borders */
+		  outline: none; /* Remove outline */
+		  background-color: red; /* Set a background color */
+		  color: white; /* Text color */
+		  cursor: pointer; /* Add a mouse pointer on hover */
+		  padding: 15px; /* Some padding */
+		  border-radius: 10px; /* Rounded corners */
+		  font-size: 18px; /* Increase font size */
+		}
+
+		#myBtn:hover {
+		  background-color: #555; /* Add a dark-grey background on hover */
+		}
+
+		.background{
+			color: black;
+		}
+		.divider{
+			border-top: 8px solid #F0131E;
+  		border-radius: 0px;
+
+		}
+		
+    </style>
+    <!----------------------------------NAV BAR----------------------------------->
+    	<nav class="nav-extended grey darken-4">
+		    <div class="nav-wrapper">
+		      <a href="index.html" class="brand-logo">	Marvel Cinematic Universe Films</a>
+		      <a class="brand-logo center">
+		      	<div class="card-image center">
+		      		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" height="70px" width="200px">
+		      	</div>
+		      </a>
+		      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a href="index.html">Home</a></li>
+		        <li><a href="about.html">About</a></li>
+		        <li><a href="news.html">Lastest News</a></li>
+      		</ul>	
+		    </div>
+			</nav>
+
+    <ul class="sidenav" id="mobile-demo">
+		  <li><a href="index.html">Home</a></li>
+		  <li><a href="about.html">About</a></li>
+		  <li><a href="news.html">Lastest News</a></li>
+  	</ul>
+<!----------------------------------NAV BAR----------------------------------->
+    
+    <body style="background-color:white;">
+    	<div class="container">
+		    <div class="col s12">
+		    	<div class="row" id="demo">
+		        	<!--下面迴圈的output會寫到這-->
+		      </div>
+		    </div>
+	 			<!-- 表單的部分 -->
+	      <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
+	      <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+	    	<script>
+	    		//Get film id number from url
+	    		var filmid = decodeURIComponent(GetUrlVar('filmid'));
+	    		var  idNum = Number(filmid);
+
+	   			// https://developers.google.com/chart/interactive/docs/quick_start
+	    		// Load the Visualization API and the corechart package.
+	    		google.charts.load('current', {'packages':['corechart']});
+
+	    		// Set a callback to run when the Google Visualization API is loaded.	
+	    		google.charts.setOnLoadCallback(init);
+
+					function init(){
+			 			var url =
+			            'https://docs.google.com/spreadsheets/d/1e9TeD5wSFUjVkAJ0L70okChWkf3vAP7tPug6pj3HSw0/gviz/tq?sheet=htmldata';
+			      var query = new google.visualization.Query(url);
+			      query.setQuery('select *');
+			      query.send(processSheetsData);
+			 		}
+
+			 		function processSheetsData(response){
+			 			var data = response.getDataTable();
+			      var col = data.getNumberOfColumns();
+			      var row = data.getNumberOfRows();
+
+
+			 			var text="";
+			 			let T = '<div class="col s4 m1 l2">'+
+			 					'	<div class="card">'+
+			 					'		<div class="card-image">'+
+			 					'			<img src="' + data.getFormattedValue(idNum, 2) +'">'+
+			 					'		</div>'+
+			 					'	</div>'+
+			 					'</div>'+
+			 					'<div class="col s8 l8>'+
+			 					'	<div class="card">'+
+			 					'		<h4> ' + data.getFormattedValue(idNum, 1) + '</h4>'+
+			 					'		<div class="divider"></div>'+
+			 					'       <p><b> Directed by:</b> '+ data.getFormattedValue(idNum, 4) + '</p>'+
+			 					'		<p><b> Starring:</b> '+ data.getFormattedValue(idNum, 5) + '</p>' +
+			 					'		<p></p>'+
+			 					'		<div class="divider"></div>'+
+			 					'		<div class="card-content">'+
+			 					'			<p>' + data.getFormattedValue(idNum, 6) +'</p>'+
+			 					'		</div>'+
+			 					'		<div class="video-container">'+
+			        			'			<iframe width="900" height="506" src="'+data.getFormattedValue(idNum, 7)+'" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'+
+			      				'		</div>'+
+			 					'	</div>'+
+			 					'</div>';
+
+			 			text += T;
+						document.getElementById("demo").innerHTML = text;
+			 		}
+
+			  		//Get the button:
+					mybutton = document.getElementById("myBtn");
+
+					// When the user scrolls down 20px from the top of the document, show the button
+					window.onscroll = function() {scrollFunction()};
+
+					function scrollFunction() {
+					  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					    mybutton.style.display = "block";
+					  } else {
+					    mybutton.style.display = "none";
+					  }
+					}
+
+					// When the user clicks on the button, scroll to the top of the document
+					function topFunction() {
+					  document.body.scrollTop = 0; // For Safari
+					  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+					}
+	     
+	      </script>
+	    </div>
+    </body>
+	  
+	      <footer class="page-footer grey darken-4">
+	          <div class="container">
+	            <div class="row">
+	              <div class="col l6 s12">
+	              	<a class="grey-text text-lighten-3" href="https://shopping.pchome.com.tw/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Marvel_Studios_2016_logo.svg/1280px-Marvel_Studios_2016_logo.svg.png" height="50%" width="50%"></a>
+	              </div>
+	            </div>
+	          </div>       
+	          <div class="footer-copyright">
+	            <div class="container">
+	           		 © 2021 No Copyright NCHU HTML
+	            </div>
+	          </div>
+	       </footer>
+  </html>

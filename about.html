@@ -1,20 +1,7 @@
 <!DOCTYPE html>
   <html>
     <head>
-    	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-	    <meta charset="utf-8">
-	    <title>Simple markers</title>
-	    <style>
-	      html, body {
-	        height: 100%;
-	        margin: 0;
-	        padding: 0;
-	      }
-	      #map {
-	        height: 100%;
-	      }
-	    </style>
-	    
+	    <title>Marvel Corporate Information - About</title>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
@@ -59,24 +46,23 @@
 		  padding: 15px; /* Some padding */
 		  border-radius: 10px; /* Rounded corners */
 		  font-size: 18px; /* Increase font size */
-		}
+			}
 
-		#myBtn:hover {
-		  background-color: #555; /* Add a dark-grey background on hover */
-		}
+			#myBtn:hover {
+			  background-color: #555; /* Add a dark-grey background on hover */
+			}
 
-		.background{
-			color: black;
-		}
-		.divider{
-			border-top: 8px solid #F0131E;
-  		border-radius: 0px;
+			.background{
+				color: black;
+			}
+			.divider{
+				border-top: 8px solid #F0131E;
+	  		border-radius: 0px;
 
-		}
-		#map {
-        height: 100%;
+			}
+			#map {
+        height: 400px;
       }
-		
     </style>
     <!----------------------------------NAV BAR----------------------------------->
     	<nav class="nav-extended grey darken-4">
@@ -123,6 +109,8 @@
 	    		// Set a callback to run when the Google Visualization API is loaded.	
 	    		google.charts.setOnLoadCallback(init);
 
+	    		var myLatLng;
+
 					function init(){
 			 			var url =
 			            'https://docs.google.com/spreadsheets/d/1e9TeD5wSFUjVkAJ0L70okChWkf3vAP7tPug6pj3HSw0/gviz/tq?sheet=htmldata';
@@ -135,6 +123,7 @@
 			 			var data = response.getDataTable();
 			      var col = data.getNumberOfColumns();
 			      var row = data.getNumberOfRows();
+			      myLatLng = data.getFormattedValue(27, 9);
 			 			var text="";
 			 			let T = 
 			 					'<div class="col s12">'+
@@ -151,7 +140,6 @@
 			 					'		<p>'+ data.getFormattedValue(27, 6) + '</p>' +
 			 					'   <h6><b> Corporate Headquarters</b></h6>'+
 			 					'   <p><b>'+ data.getFormattedValue(27, 8) + '</b><br>'+data.getFormattedValue(28, 8)+'<br>'+data.getFormattedValue(29, 8)+'</p>'+
-			 					'		<div id="map"></div>'+
 			 										// INSERT GOOGLE MAP
 			 					'   <h6><b> Contact Us </b></h6>'+
 			 					'		<p></p>'+
@@ -162,10 +150,9 @@
 			 			text += T;
 						document.getElementById("demo").innerHTML = text;
 			 		}
-			 		function initMap() {
-					  var myLatLng = {lat: 40.76054638113419, lng: -73.97887413743334};
 
-					  var map = new google.maps.Map(document.getElementById('map'), {
+			 		function initMap() {
+					  var map = new google.maps.Map(document.getElementById("map"), {
 					    zoom: 17,
 					    center: myLatLng
 					  });

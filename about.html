@@ -59,6 +59,9 @@
   		border-radius: 0px;
 
 		}
+		#map {
+        height: 100%;
+      }
 		
     </style>
     <!----------------------------------NAV BAR----------------------------------->
@@ -117,7 +120,17 @@
 			 			var data = response.getDataTable();
 			      var col = data.getNumberOfColumns();
 			      var row = data.getNumberOfRows();
+			      var myLatLng = data.getFormattedValue(27, 9);
+						var map = new google.maps.Map(document.getElementById('map'), {
+					    zoom: 20,
+					    center: myLatLng
+					  });
 
+					  var marker = new google.maps.Marker({
+					    position: myLatLng,
+					    map: map,
+					    title: 'Hello World!'
+					  });
 
 			 			var text="";
 			 			let T = 
@@ -135,6 +148,7 @@
 			 					'		<p>'+ data.getFormattedValue(27, 6) + '</p>' +
 			 					'   <h6><b> Corporate Headquarters</b></h6>'+
 			 					'   <p><b>'+ data.getFormattedValue(27, 8) + '</b><br>'+data.getFormattedValue(28, 8)+'<br>'+data.getFormattedValue(29, 8)+'</p>'+
+			 					'		<div id="map"></div>'+
 			 										// INSERT GOOGLE MAP
 			 					'   <h6><b> Contact Us </b></h6>'+
 			 					'		<p></p>'+

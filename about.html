@@ -148,6 +148,13 @@
 							</div>
 						</div>
 					</div>
+					<div class="card">
+						<div class="container">
+							<div class="row" id="demo2">
+				        	<!--下面迴圈的output會寫到這-->
+				      </div>
+			    	</div>
+		    	</div>
 			 		<div class="divider"></div>
 		    </div>
 
@@ -200,6 +207,34 @@
 						document.getElementById("demo").innerHTML = text;
 			 		}
 
+			 		function init2(){
+			 			var url =
+			            'https://docs.google.com/spreadsheets/d/1nmcICSRJ-1Bq7RQvjN9OCDpnJW78YJ7qQLTKmtwmxvo/gviz/tq?sheet=ContactUs(Responses)';
+			      var query = new google.visualization.Query(url);
+			      query.setQuery('select *');
+			      query.send(processSheetsData2);
+			 		}
+
+			 		function processSheetsData2(response){
+			 			var data = response.getDataTable();
+			      var col = data.getNumberOfColumns();
+			      var row = data.getNumberOfRows();
+			 			var text="";
+			 			var counter=0;
+			 			for(i = row-1; i >= 0 && counter <= 5; i--){
+			 				counter++;
+				 			let T = 
+				 					'<div class="col s12 m6>'+
+				 					'	<div class="card-content">'+
+				 					'		<h5> ' + data.getFormattedValue(i,1) + '</h5>'+
+				 					'		<p>'+ data.getFormattedValue(i, 4) + '</p>' +
+				 					'	</div>'+
+				 					'</div>';
+
+				 			text += T;
+			 			}
+						document.getElementById("demo2").innerHTML = text;
+			 		}
 		
 			  		//Get the button:
 					mybutton = document.getElementById("myBtn");

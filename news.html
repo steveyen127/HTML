@@ -89,66 +89,50 @@
     <body style="background-color:white;">
     	<div class="container">
 		    <div class="col s12">
+		    	<h4 class="grey-text text-darken-4 center"><b> Latest Movie Reviews on PIXNET </b></h4>
+		    	<div class="divider"></div>
 		    	<div class="row" id="demo">
 		        	<!--下面迴圈的output會寫到這-->
 		      </div>
 		    </div>
-	 			<!-- 表單的部分 -->
-	      <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
-	      <script src="https://www.gstatic.com/charts/loader.js"></script>
-
+		    			<!--		PIXNET API		-->
 	    	<script>
-	    		//Get film id number from url
-	    		var filmid = decodeURIComponent(GetUrlVar('filmid'));
-	    		var  idNum = Number(filmid);
+	    			var xmlhttp = new XMLHttpRequest();
+						var url = "https://emma.pixnet.cc/mainpage/blog/categories/latest/19?page=1&per_page=10&api_version=2&format=json";
+						xmlhttp.onreadystatechange = function() {
+							if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+								var myArr = JSON.parse(xmlhttp.responseText);
+								myFunction(myArr);
+							}
+						}
+						xmlhttp.open("GET", url, true);
+						xmlhttp.send();
 
-	   			// https://developers.google.com/chart/interactive/docs/quick_start
-	    		// Load the Visualization API and the corechart package.
-	    		google.charts.load('current', {'packages':['corechart']});
-
-	    		// Set a callback to run when the Google Visualization API is loaded.	
-	    		google.charts.setOnLoadCallback(init);
-
-					function init(){
-			 			var url =
-			            'https://docs.google.com/spreadsheets/d/1e9TeD5wSFUjVkAJ0L70okChWkf3vAP7tPug6pj3HSw0/gviz/tq?sheet=htmldata';
-			      var query = new google.visualization.Query(url);
-			      query.setQuery('select *');
-			      query.send(processSheetsData);
-			 		}
-
-			 		function processSheetsData(response){
-			 			var data = response.getDataTable();
-			      var col = data.getNumberOfColumns();
-			      var row = data.getNumberOfRows();
-
-
+			 		function myFunction(arr){
+			 			var data = arr.articles;
 			 			var text="";
-			 			let T = '<div class="col s4 m1 l2">'+
-			 					'	<div class="card">'+
-			 					'		<div class="card-image">'+
-			 					'			<img src="' + data.getFormattedValue(idNum, 2) +'">'+
-			 					'		</div>'+
-			 					'	</div>'+
-			 					'</div>'+
-			 					'<div class="col s8 l8>'+
-			 					'	<div class="card">'+
-			 					'		<h4> ' + data.getFormattedValue(idNum, 1) + '</h4>'+
-			 					'		<div class="divider"></div>'+
-			 					'       <p><b> Directed by:</b> '+ data.getFormattedValue(idNum, 4) + '</p>'+
-			 					'		<p><b> Starring:</b> '+ data.getFormattedValue(idNum, 5) + '</p>' +
-			 					'		<p></p>'+
-			 					'		<div class="divider"></div>'+
-			 					'		<div class="card-content">'+
-			 					'			<p>' + data.getFormattedValue(idNum, 6) +'</p>'+
-			 					'		</div>'+
-			 					'		<div class="video-container">'+
-			        			'			<iframe width="900" height="506" src="'+data.getFormattedValue(idNum, 7)+'" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'+
-			      				'		</div>'+
-			 					'	</div>'+
-			 					'</div>';
-
-			 			text += T;
+			 			var i;
+			 			for(i = 0; i < data.length; i++){
+				 			text += '<div class="col s12 m6 l3">';
+			 				text +=	'	<div class="card hoverable  grey lighten-1">';
+			 				if(data[i].thumb != ""){
+				        text += '		<div class="card-image small center grey lighten-1">';
+				        text += '			<img src="'+data[i].thumb+'">';
+				        text += '		</div>';
+				      }
+				      if(data[i].title != ""){
+				        text += '    	<div class="card-content grey lighten-1">';
+				        text += '      		<span class="card-title">'+data[i].title+'</span>';
+				        text += '    	</div>';
+				      }
+				      if(data[i].link != ""){
+				        text += '    	<div class="card-action grey lighten-1">';
+				        text += '      		<a class="red-text text-darken-1" href="'+data[i].link+'">Read more-></a>';
+				        text += '    	</div>';
+				      }
+			        text += '  	</div>';
+			        text += '</div>';
+				 		}
 						document.getElementById("demo").innerHTML = text;
 			 		}
 

@@ -95,7 +95,6 @@
 		    	<div class="row" id="demo">
 		        	<!--下面迴圈的output會寫到這-->
 		      </div>
-		      <div id="map"></div>
 		    </div>
 	 			<!-- 表單的部分 -->
 	      <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
@@ -121,18 +120,6 @@
 			 			var data = response.getDataTable();
 			      var col = data.getNumberOfColumns();
 			      var row = data.getNumberOfRows();
-			      var myLatLng = {lat: 40.76054638113419, lng: -73.97887413743334};
-						var map = new google.maps.Map(document.getElementById("map"), {
-					    zoom: 20,
-					    center: myLatLng
-					  });
-
-					  var marker = new google.maps.Marker({
-					    position: myLatLng,
-					    map: map,
-					    title: 'Hello World!'
-					  });
-
 			 			var text="";
 			 			let T = 
 			 					'<div class="col s12">'+
@@ -149,7 +136,7 @@
 			 					'		<p>'+ data.getFormattedValue(27, 6) + '</p>' +
 			 					'   <h6><b> Corporate Headquarters</b></h6>'+
 			 					'   <p><b>'+ data.getFormattedValue(27, 8) + '</b><br>'+data.getFormattedValue(28, 8)+'<br>'+data.getFormattedValue(29, 8)+'</p>'+
-			 					//'		<div id="map"></div>'+
+			 					'		<div id="map"></div>'+
 			 										// INSERT GOOGLE MAP
 			 					'   <h6><b> Contact Us </b></h6>'+
 			 					'		<p></p>'+
@@ -160,6 +147,20 @@
 			 			text += T;
 						document.getElementById("demo").innerHTML = text;
 			 		}
+			 		function initMap() {
+					  var myLatLng = {lat: 40.76054638113419, lng: -73.97887413743334};
+
+					  var map = new google.maps.Map(document.getElementById('map'), {
+					    zoom: 17,
+					    center: myLatLng
+					  });
+
+					  var marker = new google.maps.Marker({
+					    position: myLatLng,
+					    map: map,
+					    title: 'Hello World!'
+					  });
+					}
 
 			  		//Get the button:
 					mybutton = document.getElementById("myBtn");

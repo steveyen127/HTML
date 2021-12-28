@@ -92,6 +92,9 @@
 		    	<div class="row" id="demo">
 		        	<!--下面迴圈的output會寫到這-->
 		      </div>
+		      <h5><b> Contact Us </b></h5>
+			 		<p></p>
+			 		<div class="divider"></div>
 		    </div>
 	 			<!-- 表單的部分 -->
 	      <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
@@ -131,13 +134,10 @@
 			 					'		<h4> ' + data.getFormattedValue(27, 1) + '</h4>'+
 			 					'		<div class="divider"></div>'+
 			 					'		<p>'+ data.getFormattedValue(27, 6) + '</p>' +
-			 					'   <h6><b> Corporate Headquarters</b></h6>'+
+			 					'   <h5><b> Corporate Headquarters</b></h5>'+
 			 					'   <p><b>'+ data.getFormattedValue(27, 8) + '</b><br>'+data.getFormattedValue(28, 8)+'<br>'+data.getFormattedValue(29, 8)+'</p>'+
 			 										// INSERT GOOGLE MAP
 			 					'		<iframe src="'+data.getFormattedValue(27,9)+'" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>'+
-			 					'   <h6><b> Contact Us </b></h6>'+
-			 					'		<p></p>'+
-			 					'		<div class="divider"></div>'+
 			 					'	</div>'+
 			 					'</div>';
 

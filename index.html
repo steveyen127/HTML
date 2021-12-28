@@ -50,71 +50,74 @@
     <header>
     	<nav class="nav-extended grey darken-4">
 		    <div class="nav-wrapper">
-		      	<a href="index.html" class="brand-logo">Marvel Cinematic Universe Films</a>
-		      	<a class="brand-logo center">
+		      <a href="index.html" class="brand-logo">Marvel Cinematic Universe Films</a>
+		      <a class="brand-logo center">
 		      		
-		      		<div class="card-image center">
-		      			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" height="70px" width="200px">
-		      		</div>
-		      	</a>
-		      	<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>	
+		      <div class="card-image center">
+		      	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" height="70px" width="200px">
+		      </div>
+		      </a>
+		      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>	
 		    </div>
 		    <div class="nav-content">
 		      <ul class="tabs tabs-transparent">
-		        <li class="tab"><a href="#phase1">Phase 1</a></li>
-		        <li class="tab"><a href="#phase2">Phase 2</a></li>
-		        <li class="tab"><a href="#phase3">Phase 3</a></li>
-		        <li class="tab"><a href="#phase4">Phase 4</a></li>
+		      	<li class="tab"><a href="#phase1">Phase 1</a></li>
+		      	<li class="tab"><a href="#phase2">Phase 2</a></li>
+		      	<li class="tab"><a href="#phase3">Phase 3</a></li>
+		      	<li class="tab"><a href="#phase4">Phase 4</a></li>
 		      </ul>
 		    </div>
-		</nav>
+			</nav>
     </header>
+
     <style type="text/css">
     	.card-image{
     		height: 400px;
     		overflow: hidden;
     	}
     </style>
+
     <body style="background-color:white;">
+    	<div class="container">
+			  <ul class="sidenav" id="mobile-demo">
+			    <li><a href="sass.html">Sass</a></li>
+			    <li><a href="badges.html">Components</a></li>
+			    <li><a href="collapsible.html">JavaScript</a></li>
+			  </ul>
 
-		  <ul class="sidenav" id="mobile-demo">
-		    <li><a href="sass.html">Sass</a></li>
-		    <li><a href="badges.html">Components</a></li>
-		    <li><a href="collapsible.html">JavaScript</a></li>
-		  </ul>
+		    <div id="phase1" class="col s12 section">
+		    	<h4 class="grey-text text-darken-4 center"><b> Phase 1 </b></h4>
+		    	<div class="divider"></div>
+		    	<div class="row" id="demo">
+		        	<!--下面迴圈的output會寫到這-->
+		      	</div>
+		    </div>
 
-	    <div id="phase1" class="col s12 section">
-	    	<h4 class="grey-text text-darken-4 center"><b> Phase 1 </b></h4>
-	    	<div class="divider"></div>
-	    	<div class="row" id="demo">
-	        	<!--下面迴圈的output會寫到這-->
-	      	</div>
-	    </div>
-
-	    <div id="phase2" class="col s12 section">
-	    	<h4 class="grey-text text-darken-4 center"><b> Phase 2 </b></h4>
-	    	<div class="divider"></div>
-	    	<div class="row" id="demo2">
-	        	<!--下面迴圈的output會寫到這-->
-	      	</div>
-	    </div>
-	    
-	  	<div id="phase3" class="col s12 section">
-	  		<h4 class="grey-text text-darken-4 center"><b> Phase 3 </b></h4>
-	    	<div class="divider"></div>	
-	  		<div class="row" id="demo3">
-	        	<!--下面迴圈的output會寫到這-->
-	      	</div>
-	    </div>
-	    
-	  	<div id="phase4" class="col s12 section">
-	  		<h4 class="grey-text text-darken-4 center"><b> Phase 4 </b></h4>
-	    	<div class="divider"></div>	
-	  		<div class="row" id="demo4">
-	        	<!--下面迴圈的output會寫到這-->
-	      	</div>
-	    </div>
-
+		    <div id="phase2" class="col s12 section">
+		    	<h4 class="grey-text text-darken-4 center"><b> Phase 2 </b></h4>
+		    	<div class="divider"></div>
+		    	<div class="row" id="demo2">
+		        	<!--下面迴圈的output會寫到這-->
+		      	</div>
+		    </div>
+		    
+		  	<div id="phase3" class="col s12 section">
+		  		<h4 class="grey-text text-darken-4 center"><b> Phase 3 </b></h4>
+		    	<div class="divider"></div>	
+		  		<div class="row" id="demo3">
+		        	<!--下面迴圈的output會寫到這-->
+		      	</div>
+		    </div>
+		    
+		  	<div id="phase4" class="col s12 section">
+		  		<h4 class="grey-text text-darken-4 center"><b> Phase 4 </b></h4>
+		    	<div class="divider"></div>	
+		  		<div class="row" id="demo4">
+		        	<!--下面迴圈的output會寫到這-->
+		      	</div>
+		    </div>
+		  </div>
+		</body>
 	    <!-- 表單的部分 ->
       <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
       <script src="https://www.gstatic.com/charts/loader.js"></script>
@@ -215,7 +218,4 @@
             </div>
           </div>
        </footer>
-
-    </body>
-    
   </html>

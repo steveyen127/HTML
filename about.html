@@ -29,6 +29,32 @@
 
 		
       </script>
+      <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+			<script type="text/javascript">
+			function formresponse() {
+				var name = document.forms["form1"]["name"].value;
+				var email = document.forms["form1"]["email"].value;
+    		var subject = document.forms["form1"]["subject"].value;
+    		var message = document.forms["form1"]["message"].value
+				if (name==null || name==""){
+					alert("YOUR NAME* IS REQUIRED");
+					return false;
+			  }
+				else if (email==null || email==""){
+					alert("YOUR EMAIL* IS REQUIRED");
+					return false;
+				}
+				else if (message ==null || message ==""){
+					alert("MESSAGE* IS REQUIRED");
+					return false;
+				}
+				else{
+					var MySubmit = "https://docs.google.com/forms/d/e/1FAIpQLSeNn9YIVCYfaR0oU2zxMFz5m1dTFXCWccQzf5gTSce4XuftOA/formResponse?&entry.901983148="+name+"&entry.1927677035="+email+"&entry.215611022="+subject+"&entry.1797893750="+message+"&submit=Submit";
+					$("#formresponse").html(unescape("%3Cscript type='text/javascript' src='" + MySubmit + "'%3E%3C/script%3E"));
+					alert("Thank Your for Contacting Us");
+				}
+			}
+			</script>
 
     </head>
     <style type="text/css">
@@ -93,9 +119,25 @@
 		        	<!--下面迴圈的output會寫到這-->
 		      </div>
 		      <h5><b> Contact Us </b></h5>
-			 		<p></p>
+			 		<span id="formresponse"></span>
+					<form name="form1" action="javascript:formresponse();">
+						<div data-role="fieldcontain">
+							<label for="name">YOUR NAME:</label><input type="text" name="name">
+						</div>
+						<div data-role="fieldcontain">
+							<label for="name">YOUR EMAIL:</label><input type="text" name="email">
+						</div>
+						<div data-role="fieldcontain">
+							<label for="name">SUBJECT:</label><input type="text" name="subject">
+						</div>
+						<div data-role="fieldcontain">
+							<label for="name">MESSAGE:</label><input type="text" name="message">
+						</div>
+						<input type="submit" value="Submit">
+					</form>
 			 		<div class="divider"></div>
 		    </div>
+
 	 			<!-- 表單的部分 -->
 	      <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
 	      <script src="https://www.gstatic.com/charts/loader.js"></script>

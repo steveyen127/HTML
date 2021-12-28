@@ -148,6 +148,7 @@
 							</div>
 						</div>
 					</div>
+					<h5><b> Last 5 Messages </b></h5>
 					<div class="card">
 						<div class="container">
 							<div class="row" id="demo2">
@@ -222,7 +223,7 @@
 			      var row = data.getNumberOfRows();
 			 			var text="";
 			 			var counter=0;
-			 			for(i = row-1; i >= 0 && counter <= 5; i--){
+			 			for(i = row-1; i >= 0 && counter < 5; i--){
 			 				counter++;
 				 			let T = 
 				 					'<div class="col s12 m6>'+

@@ -208,15 +208,15 @@
 			 		}
 
 			 		function init2(){
-			 			var url =
-			            'https://docs.google.com/spreadsheets/d/1nmcICSRJ-1Bq7RQvjN9OCDpnJW78YJ7qQLTKmtwmxvo/gviz/tq?sheet=ContactUs(Responses)';
-			      var query = new google.visualization.Query(url);
+			 			var url2 =
+			            'https://docs.google.com/spreadsheets/d/1nmcICSRJ-1Bq7RQvjN9OCDpnJW78YJ7qQLTKmtwmxvo/gviz/tq?sheet=ContactUsResponses';
+			      var query = new google.visualization.Query(url2);
 			      query.setQuery('select *');
 			      query.send(processSheetsData2);
 			 		}
 
-			 		function processSheetsData2(response){
-			 			var data = response.getDataTable();
+			 		function processSheetsData2(response2){
+			 			var data = response2.getDataTable();
 			      var col = data.getNumberOfColumns();
 			      var row = data.getNumberOfRows();
 			 			var text="";

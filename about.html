@@ -120,7 +120,7 @@
 			 			var data = response.getDataTable();
 			      var col = data.getNumberOfColumns();
 			      var row = data.getNumberOfRows();
-			      var myLatLng = data.getFormattedValue(27, 9);
+			      var myLatLng = {lat: 40.76054638113419, lng: -73.97887413743334};
 						var map = new google.maps.Map(document.getElementById('map'), {
 					    zoom: 20,
 					    center: myLatLng

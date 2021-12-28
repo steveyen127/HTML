@@ -98,10 +98,6 @@
 	      <script src="https://www.gstatic.com/charts/loader.js"></script>
 
 	    	<script>
-	    		//Get film id number from url
-	    		var filmid = decodeURIComponent(GetUrlVar('filmid'));
-	    		var  idNum = Number(filmid);
-
 	   			// https://developers.google.com/chart/interactive/docs/quick_start
 	    		// Load the Visualization API and the corechart package.
 	    		google.charts.load('current', {'packages':['corechart']});
@@ -124,26 +120,25 @@
 
 
 			 			var text="";
-			 			let T = '<div class="col s4 m1 l2">'+
-			 					'	<div class="card">'+
-			 					'		<div class="card-image">'+
-			 					'			<img src="' + data.getFormattedValue(idNum, 2) +'">'+
-			 					'		</div>'+
+			 			let T =
+			 					'<div class="card">'+
+			 					'	<div class="card-image">'+
+			 					'	<img src="' + data.getFormattedValue(27, 2) +'">'+
 			 					'	</div>'+
 			 					'</div>'+
 			 					'<div class="col s8 l8>'+
 			 					'	<div class="card">'+
-			 					'		<h4> ' + data.getFormattedValue(idNum, 1) + '</h4>'+
+			 					'		<h4> ' + data.getFormattedValue(27, 1) + '</h4>'+
 			 					'		<div class="divider"></div>'+
-			 					'       <p><b> Directed by:</b> '+ data.getFormattedValue(idNum, 4) + '</p>'+
-			 					'		<p><b> Starring:</b> '+ data.getFormattedValue(idNum, 5) + '</p>' +
+			 					'       <p><b> Directed by:</b> '+ data.getFormattedValue(27, 4) + '</p>'+
+			 					'		<p><b> Starring:</b> '+ data.getFormattedValue(27, 5) + '</p>' +
 			 					'		<p></p>'+
 			 					'		<div class="divider"></div>'+
 			 					'		<div class="card-content">'+
-			 					'			<p>' + data.getFormattedValue(idNum, 6) +'</p>'+
+			 					'			<p>' + data.getFormattedValue(27, 6) +'</p>'+
 			 					'		</div>'+
 			 					'		<div class="video-container">'+
-			        			'			<iframe width="900" height="506" src="'+data.getFormattedValue(idNum, 7)+'" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'+
+			        			'			<iframe width="900" height="506" src="'+data.getFormattedValue(27, 7)+'" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'+
 			      				'		</div>'+
 			 					'	</div>'+
 			 					'</div>';

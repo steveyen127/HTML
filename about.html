@@ -60,9 +60,6 @@
 	  		border-radius: 0px;
 
 			}
-			#map {
-        height: 400px;
-      }
     </style>
     <!----------------------------------NAV BAR----------------------------------->
     	<nav class="nav-extended grey darken-4">
@@ -95,7 +92,6 @@
 		    	<div class="row" id="demo">
 		        	<!--下面迴圈的output會寫到這-->
 		      </div>
-		      <div id="map"></div>
 		    </div>
 	 			<!-- 表單的部分 -->
 	      <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
@@ -109,8 +105,6 @@
 	    		// Set a callback to run when the Google Visualization API is loaded.	
 	    		google.charts.setOnLoadCallback(init);
 
-	    		var myLatLng;
-
 					function init(){
 			 			var url =
 			            'https://docs.google.com/spreadsheets/d/1e9TeD5wSFUjVkAJ0L70okChWkf3vAP7tPug6pj3HSw0/gviz/tq?sheet=htmldata';
@@ -123,7 +117,6 @@
 			 			var data = response.getDataTable();
 			      var col = data.getNumberOfColumns();
 			      var row = data.getNumberOfRows();
-			      myLatLng = data.getFormattedValue(27, 9);
 			 			var text="";
 			 			let T = 
 			 					'<div class="col s12">'+
@@ -139,8 +132,9 @@
 			 					'		<div class="divider"></div>'+
 			 					'		<p>'+ data.getFormattedValue(27, 6) + '</p>' +
 			 					'   <h6><b> Corporate Headquarters</b></h6>'+
-			 					'   <p><b>'+ data.getFormattedValue(27, 9) + '</b><br>'+data.getFormattedValue(28, 8)+'<br>'+data.getFormattedValue(29, 8)+'</p>'+
+			 					'   <p><b>'+ data.getFormattedValue(27, 8) + '</b><br>'+data.getFormattedValue(28, 8)+'<br>'+data.getFormattedValue(29, 8)+'</p>'+
 			 										// INSERT GOOGLE MAP
+			 					'		<iframe src="'+data.getFormattedValue(27,9)+'" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>'+
 			 					'   <h6><b> Contact Us </b></h6>'+
 			 					'		<p></p>'+
 			 					'		<div class="divider"></div>'+
@@ -151,19 +145,7 @@
 						document.getElementById("demo").innerHTML = text;
 			 		}
 
-			 		function initMap() {
-					  var map = new google.maps.Map(document.getElementById("map"), {
-					    zoom: 17,
-					    center: myLatLng
-					  });
-
-					  var marker = new google.maps.Marker({
-					    position: myLatLng,
-					    map: map,
-					    title: 'Marvel Entertainment, LLC'
-					  });
-					}
-
+		
 			  		//Get the button:
 					mybutton = document.getElementById("myBtn");
 
@@ -185,8 +167,6 @@
 					}
 	     
 	      </script>
-	      <script async defer
-        src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
 	    </div>
     </body>
 	  

@@ -95,6 +95,7 @@
 		    	<div class="row" id="demo">
 		        	<!--下面迴圈的output會寫到這-->
 		      </div>
+		      <div id="map"></div>
 		    </div>
 	 			<!-- 表單的部分 -->
 	      <!-- 利用Google Visualization讀取Google Sheet https://www.labnol.org/code/google-sheet-d3js-visualization-200608 -->
@@ -121,7 +122,7 @@
 			      var col = data.getNumberOfColumns();
 			      var row = data.getNumberOfRows();
 			      var myLatLng = {lat: 40.76054638113419, lng: -73.97887413743334};
-						var map = new google.maps.Map(document.getElementById('map'), {
+						var map = new google.maps.Map(document.getElementById("map"), {
 					    zoom: 20,
 					    center: myLatLng
 					  });
@@ -184,7 +185,6 @@
 	      <script async defer
         src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
 	    </div>
-	    <div id="map"></div>
     </body>
 	  
 	      <footer class="page-footer grey darken-4">

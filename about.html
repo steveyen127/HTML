@@ -172,37 +172,35 @@
 	    		google.charts.setOnLoadCallback(init2);
 
 					function init(){
-			 			var url =
-			            'https://docs.google.com/spreadsheets/d/1e9TeD5wSFUjVkAJ0L70okChWkf3vAP7tPug6pj3HSw0/gviz/tq?sheet=htmldata';
-			      var query = new google.visualization.Query(url);
-			      query.setQuery('select *');
-			      query.send(processSheetsData);
+			 			var url ='https://docs.google.com/spreadsheets/d/1e9TeD5wSFUjVkAJ0L70okChWkf3vAP7tPug6pj3HSw0/gviz/tq?sheet=htmldata';
+			      			var query = new google.visualization.Query(url);
+			      			query.setQuery('select *');
+			      			query.send(processSheetsData);
 			 		}
 
 			 		function processSheetsData(response){
-			 			var data = response.getDataTable();
-			      var col = data.getNumberOfColumns();
-			      var row = data.getNumberOfRows();
-			 			var text="";
-			 			let T = 
-			 					'<div class="col s12">'+
-			 					'	<div class="card">'+
-			 					'		<div class="card-image">'+
-			 					'			<img src="' + data.getFormattedValue(27, 2) +'">'+
-			 					'		</div>'+
-			 					'	</div>'+
-			 					'</div>'+
-			 					'<div class="col s12 m6>'+
-			 					'	<div class="card">'+
-			 					'		<h4> ' + data.getFormattedValue(27, 1) + '</h4>'+
-			 					'		<div class="divider"></div>'+
-			 					'		<p>'+ data.getFormattedValue(27, 6) + '</p>' +
-			 					'   <h5><b> Corporate Headquarters</b></h5>'+
-			 					'   <p><b>'+ data.getFormattedValue(27, 8) + '</b><br>'+data.getFormattedValue(28, 8)+'<br>'+data.getFormattedValue(29, 8)+'</p>'+
-			 										// INSERT GOOGLE MAP
-			 					'		<iframe src="'+data.getFormattedValue(27,9)+'" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>'+
-			 					'	</div>'+
-			 					'</div>';
+			 		var data = response.getDataTable();
+			      		var col = data.getNumberOfColumns();
+			      		var row = data.getNumberOfRows();
+			 		var text="";
+			 		let T = 
+			 			'<div class="col s12">'+
+			 			'	<div class="card">'+
+			 			'		<div class="card-image">'+
+			 			'			<img src="' + data.getFormattedValue(27, 2) +'">'+
+			 			'		</div>'+
+			 			'	</div>'+
+			 			'</div>'+
+			 			'<div class="col s12 m6>'+
+			 			'	<div class="card">'+
+			 			'		<h4> ' + data.getFormattedValue(27, 1) + '</h4>'+
+			 			'		<div class="divider"></div>'+
+			 			'		<p>'+ data.getFormattedValue(27, 6) + '</p>' +
+			 			'   <h5><b> Corporate Headquarters</b></h5>'+
+			 			'   <p><b>'+ data.getFormattedValue(27, 8) + '</b><br>'+data.getFormattedValue(28, 8)+'<br>'+data.getFormattedValue(29, 8)+'</p>'+
+			 			'		<iframe src="'+data.getFormattedValue(27,9)+'" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>'+
+			 			'	</div>'+
+			 			'</div>';
 
 			 			text += T;
 						document.getElementById("demo").innerHTML = text;

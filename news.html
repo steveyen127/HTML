@@ -102,43 +102,43 @@
 		    			<!--		PIXNET API		aa-->
 	    	<script>
 	    			var xmlhttp = new XMLHttpRequest();
-						var url = "https://emma.pixnet.cc/mainpage/blog/categories/latest/19?page=1&per_page=16&api_version=2&format=json";
-						xmlhttp.onreadystatechange = function() {
-							if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-								var myArr = JSON.parse(xmlhttp.responseText);
-								myFunction(myArr);
-							}
-						}
+				var url = "https://emma.pixnet.cc/mainpage/blog/categories/latest/19?page=1&per_page=16&api_version=2&format=json";
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						var myArr = JSON.parse(xmlhttp.responseText);
+						myFunction(myArr);
+					}
+				}
 						xmlhttp.open("GET", url, true);
 						xmlhttp.send();
 
-			 		function myFunction(arr){
-			 			var data = arr.articles;
-			 			var text="";
-			 			var i;
-			 			for(i = 0; i < data.length; i++){
-				 			text += '<div class="col s12 m6 l3">';
-			 				text +=	'	<div class="card hoverable  grey lighten-1">';
-			 				if(data[i].thumb != ""){
-				        text += '		<div class="card-image small center grey lighten-1">';
-				        text += '			<img src="'+data[i].thumb+'">';
-				        text += '		</div>';
-				      }
-				      if(data[i].title != ""){
-				        text += '    	<div class="card-content grey lighten-1">';
-				        text += '      		<span class="card-title">'+data[i].title+'</span>';
-				        text += '    	</div>';
-				      }
-				      if(data[i].link != ""){
-				        text += '    	<div class="card-action grey lighten-1">';
-				        text += '      		<a class="red-text text-darken-1" href="'+data[i].link+'">Read more-></a>';
-				        text += '    	</div>';
-				      }
-			        text += '  	</div>';
-			        text += '</div>';
-				 		}
+			 	function myFunction(arr){
+			 		var data = arr.articles;
+			 		var text="";
+			 		var i;
+			 		for(i = 0; i < data.length; i++){
+				 		text += '<div class="col s12 m6 l3">';
+			 			text +=	'	<div class="card hoverable  grey lighten-1">';
+			 			if(data[i].thumb != ""){
+				       			text += '<div class="card-image small center grey lighten-1">';
+				        		text += '	<img src="'+data[i].thumb+'">';
+				        		text += '</div>';
+				      		}
+				      		if(data[i].title != ""){
+				        		text += '<div class="card-content grey lighten-1">';
+				        		text += '      	<span class="card-title">'+data[i].title+'</span>';
+				        		text += '</div>';
+				      		}
+					      	if(data[i].link != ""){
+				        		text += '<div class="card-action grey lighten-1">';
+				        		text += '	<a class="red-text text-darken-1" href="'+data[i].link+'">Read more-></a>';
+				        		text += '</div>';
+				      		}
+			        		text += '  	</div>';
+			        		text += '</div>';
+				 	}
 						document.getElementById("demo").innerHTML = text;
-			 		}
+			 	}
 
 			  		//Get the button:
 					mybutton = document.getElementById("myBtn");
